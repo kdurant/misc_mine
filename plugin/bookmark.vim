@@ -7,9 +7,17 @@
 " LastChange  :	2013-07-28 21:40:46
 " ChangeLog   :	
 "=============================================================================
-let g:store_path = 'E:/Dropbox/home/PluginConfig/BookMark'
+if has('win32') || has('win64')
+    let g:store_path = 'E:/Dropbox/home/PluginConfig/BookMark'
+else
+    let g:store_path = '~/PluginConfig/BookMark'
+endif
 if !exists('g:store_path')
-    let g:store_path = 'E:/home/PluginConfig/BookMark'
+    if has('win32') || has('win64')
+        let g:store_path = 'E:/home/PluginConfig/BookMark'
+    else
+        let g:store_path = '~/PluginConfig/BookMark'
+    endif
 endif
 
 let g:store_name = 'bookmark.vim'
