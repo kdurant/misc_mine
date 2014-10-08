@@ -8,7 +8,7 @@
 " ChangeLog   :	
 "=============================================================================
 if has('win32') || has('win64')
-    let g:store_path = 'E:/Dropbox/home/PluginConfig/BookMark'
+    let g:store_path = 'E:/home/PluginConfig/BookMark'
 else
     let g:store_path = '~/PluginConfig/BookMark'
 endif
