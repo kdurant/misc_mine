@@ -1,15 +1,18 @@
-"highlight Functions
-syntax match cSelfDefine    '\<\([A-Z0-9]\+_\)\+[A-Z0-9]\+\>'
-hi link cSelfDefine Macro
+syntax match cUserDefine    '\<\([A-Z0-9]\+_\)\+[A-Z0-9]\+\>'
+hi link cUserDefine Macro
 
-syn match cFunction /\<\w\+\%(\s*(\)\@=/
-hi link cFunction Function
+"syn match cFunction /\<\w\+\%(\s*(\)\@=/
+"hi link cFunction Function
 
 syntax match cOperator "?\|+\|]\|\[\|(\|)\|{\|}\|,\|-\|;\|\.\|*\|:\|\^\|<\|>\|&\||\|!\|\~\|%\|=\|/\(/\|*\)\@!"
 hi link cOperator Operator
- 
-syntax match cSelfDefine    '\<\([A-Z0-9]\+_\)\+[A-Z0-9]\+\>'
-hi link cSelfDefine Macro
 
-syn keyword	cType	int16   int32   Uint16  U8  Uint32  float32 float64	
+syntax match cUserDefine    '\<\([A-Z0-9]\+_\)\+[A-Z0-9]\+\>'
+hi link cUserDefine Macro
+
+syn match cUserFunction "\<\h\w*\>\(\s\|\n\)*("me=e-1 contains=cType,cDelimiter,cDefine
+syn match cUserFunctionPointer "(\s*\*\s*\h\w*\s*)\(\s\|\n\)*(" contains=cDelimiter,cOperator
+
+hi link cUserFunction Function
+hi link cUserFunctionPointer Function
 
