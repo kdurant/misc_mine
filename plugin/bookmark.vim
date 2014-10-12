@@ -30,8 +30,7 @@ function! bookmark#add(bm_name)
     else
         let l:new_bm = [a:bm_name, expand('%:p')] + l:old_bm
     endif
-    exe 'cd ' . g:bm_path
-    call writefile(l:new_bm, g:bm_name)
+    call writefile(l:new_bm, g:bm_path . "/" .g:bm_name)
     set autochdir
 endfunction
 
@@ -101,8 +100,7 @@ function! bookmark#del()
                 break
             endif
         endfor
-        exe 'cd ' . g:bm_path
-        call writefile(s:old_bm, g:bm_name)
+        call writefile(s:old_bm, g:bm_path . "/" . g:bm_name)
         exe "normal dd"
     endif
     setlocal nomodifiable
