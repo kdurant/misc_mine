@@ -7,31 +7,31 @@
 " LastChange  :	2013-07-28 21:40:46
 " ChangeLog   :
 "=============================================================================
-if !exists('g:store_path')
-    let g:s_path = '~/PluginConfig/BookMark'
+if !exists('g:bm_path')
+    let s:bm_path = '~/PluginConfig/BookMark'
 endif
-let g:store_path = glob(g:s_path)
+let g:bm_path = glob(s:bm_path)
 
-let g:store_name = 'bookmark.vim'
-if !exists('g:store_name')
-    let g:store_name = 'bookmark.vim'
+let g:bm_name = 'bookmark.vim'
+if !exists('g:bm_name')
+    let g:bm_name = 'bookmark.vim'
 endif
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "add bookmark
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 command! -nargs=1 Bookmark call bookmark#add(<f-args>)
-function! bookmark#add(bookmark_name)
-    if findfile(g:store_name, g:store_path) != ''
-        let s:old_bookmark_info = readfile(g:store_path.'/'.g:store_name)
+function! bookmark#add(bm_name)
+    if findfile(g:bm_name, g:bm_path) != ''
+        let s:old_bm = readfile(g:bm_path.'/'.g:bm_name)
     endif
-    if a:bookmark_name == '%'
-        let s:new_bookmark_info = [expand('%'), expand('%:p')] + s:old_bookmark_info
+    if a:bm_name == '%'
+        let s:new_bm = [expand('%'), expand('%:p')] + s:old_bm
     else
-        let s:new_bookmark_info = [a:bookmark_name, expand('%:p')] + s:old_bookmark_info
+        let s:new_bm = [a:bm_name, expand('%:p')] + s:old_bm
     endif
-    exe 'cd ' . g:store_path
-    call writefile(s:new_bookmark_info, g:store_name)
+    exe 'cd ' . g:bm_path
+    call writefile(s:new_bm, g:bm_name)
     set autochdir
 endfunction
 
@@ -43,8 +43,8 @@ function! bookmark#open()
     if bufname('%') == 'BookMark'
         exe "close"
     endif
-    let s:get_bookmark_name = 0
-    let s:get_bookmark_path = 0
+    let s:get_bm_name = 0
+    let s:get_bm_path = 0
     silent execute 'to '.10.'split BookMark'
     setlocal buftype=nofile
     setlocal bufhidden=wipe
@@ -63,18 +63,18 @@ function! bookmark#open()
     setlocal modifiable
     call setline(1, "BookmarkName\t\t\tBookmarkPath")
     let s:line_num = 2
-    for key in readfile(g:store_path.'/'.g:store_name) "s:old_bookmark_info
+    for key in readfile(g:bm_path.'/'.g:bm_name) "s:old_bm
         if key =~ '\w*\/\w*'
-            let s:get_bookmark_path = 1
-            let s:bookmark_path = key
+            let s:get_bm_path = 1
+            let s:bm_path = key
         else
-            let s:get_bookmark_name = 1
-            let s:bookmark_name = key
+            let s:get_bm_name = 1
+            let s:bm_name = key
         endif
-        if s:get_bookmark_path == 1 && s:get_bookmark_name == 1
-            let s:get_bookmark_name = 0 | let s:get_bookmark_path = 0
-            let s:bookmark_name = bookmark#align(s:bookmark_name)
-            call setline(s:line_num, s:bookmark_name . s:bookmark_path)
+        if s:get_bm_path == 1 && s:get_bm_name == 1
+            let s:get_bm_name = 0 | let s:get_bm_path = 0
+            let s:bm_name = bookmark#align(s:bm_name)
+            call setline(s:line_num, s:bm_name . s:bm_path)
             let s:line_num = s:line_num + 1
         endif
     endfor
@@ -93,16 +93,16 @@ function! bookmark#del()
     setlocal modifiable
     let s:choice = confirm("Delete bookmark?", "&Yes\n&No")
     if s:choice == 1
-        let s:old_bookmark_info = readfile(g:store_path.'/'.g:store_name)
-        for key in s:old_bookmark_info
+        let s:old_bm = readfile(g:bm_path.'/'.g:bm_name)
+        for key in s:old_bm
             if key == substitute(getline('.'), '\s\+.*', '', '')
-                call remove(s:old_bookmark_info, index(s:old_bookmark_info,key))
-                call remove(s:old_bookmark_info, index(s:old_bookmark_info,key) + 1)
+                call remove(s:old_bm, index(s:old_bm,key))
+                call remove(s:old_bm, index(s:old_bm,key) + 1)
                 break
             endif
         endfor
-        exe 'cd ' . g:store_path
-        call writefile(s:old_bookmark_info, g:store_name)
+        exe 'cd ' . g:bm_path
+        call writefile(s:old_bm, g:bm_name)
         exe "normal dd"
     endif
     setlocal nomodifiable
@@ -112,25 +112,23 @@ endfunction
 "build keymap
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 function! bookmark#use()
-    let g:bookmark_filename = substitute(getline('.'), '\w\+.\w\+\s\+', '', '')
+    let s:filename = substitute(getline('.'), '\w\+.\w\+\s\+', '', '')
     silent exe  "close"
-    silent exe "tabnew " . g:bookmark_filename
-    unlet g:bookmark_filename
+    silent exe "tabnew " . s:filename
 endfunction
 
 function! bookmark#use_cr()
-    let g:bookmark_filename = substitute(getline('.'), '\w\+.\w\+\s\+', '', '')
+    let s:filename = substitute(getline('.'), '\w\+.\w\+\s\+', '', '')
     silent exe  "close"
-    silent exe "e " . g:bookmark_filename
-    unlet g:bookmark_filename
+    silent exe "e " . s:filename
 endfunction
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "align bookmark
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-function! bookmark#align(bookmark_name)
-    while strlen(s:bookmark_name) < 24
-        let s:bookmark_name = s:bookmark_name . " "
+function! bookmark#align(bm_name)
+    while strlen(s:bm_name) < 24
+        let s:bm_name = s:bm_name . " "
     endw
-    return s:bookmark_name
+    return s:bm_name
 endfunction
