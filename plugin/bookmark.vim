@@ -23,15 +23,15 @@ endif
 command! -nargs=1 Bookmark call bookmark#add(<f-args>)
 function! bookmark#add(bm_name)
     if findfile(g:bm_name, g:bm_path) != ''
-        let s:old_bm = readfile(g:bm_path.'/'.g:bm_name)
+        let l:old_bm = readfile(g:bm_path.'/'.g:bm_name)
     endif
     if a:bm_name == '%'
-        let s:new_bm = [expand('%'), expand('%:p')] + s:old_bm
+        let l:new_bm = [expand('%'), expand('%:p')] + l:old_bm
     else
-        let s:new_bm = [a:bm_name, expand('%:p')] + s:old_bm
+        let l:new_bm = [a:bm_name, expand('%:p')] + l:old_bm
     endif
     exe 'cd ' . g:bm_path
-    call writefile(s:new_bm, g:bm_name)
+    call writefile(l:new_bm, g:bm_name)
     set autochdir
 endfunction
 
