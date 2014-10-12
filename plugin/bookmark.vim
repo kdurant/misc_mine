@@ -2,23 +2,15 @@
 " FileName    :	bookmark.vim
 " Author      :	kdurant
 " Email       :	kdurant0725@gmail.com
-" Description :	
+" Description :
 " Version     :	1.0
 " LastChange  :	2013-07-28 21:40:46
-" ChangeLog   :	
+" ChangeLog   :
 "=============================================================================
-if has('win32') || has('win64')
-    let g:store_path = 'E:/home/PluginConfig/BookMark'
-else
-    let g:store_path = '~/PluginConfig/BookMark'
-endif
 if !exists('g:store_path')
-    if has('win32') || has('win64')
-        let g:store_path = 'E:/home/PluginConfig/BookMark'
-    else
-        let g:store_path = '~/PluginConfig/BookMark'
-    endif
+    let g:s_path = '~/PluginConfig/BookMark'
 endif
+let g:store_path = glob(g:s_path)
 
 let g:store_name = 'bookmark.vim'
 if !exists('g:store_name')
@@ -57,7 +49,6 @@ function! bookmark#open()
     setlocal buftype=nofile
     setlocal bufhidden=wipe
     setlocal filetype=bookmark
-    setlocal modifiable
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "key map
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -69,15 +60,16 @@ function! bookmark#open()
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "open bookmark at new window
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+    setlocal modifiable
     call setline(1, "BookmarkName\t\t\tBookmarkPath")
     let s:line_num = 2
     for key in readfile(g:store_path.'/'.g:store_name) "s:old_bookmark_info
         if key =~ '\w*\/\w*'
             let s:get_bookmark_path = 1
-            let s:bookmark_path = key 
-        else 
+            let s:bookmark_path = key
+        else
             let s:get_bookmark_name = 1
-            let s:bookmark_name = key 
+            let s:bookmark_name = key
         endif
         if s:get_bookmark_path == 1 && s:get_bookmark_name == 1
             let s:get_bookmark_name = 0 | let s:get_bookmark_path = 0
