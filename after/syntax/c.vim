@@ -16,3 +16,4 @@ syn match cUserFunctionPointer "(\s*\*\s*\h\w*\s*)\(\s\|\n\)*(" contains=cDelimi
 hi link cUserFunction Function
 hi link cUserFunctionPointer Function
 
+syn keyword	cTodo		contained note Note NOTE Notes
