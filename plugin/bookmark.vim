@@ -53,8 +53,8 @@ function! bookmark#open()
     map <buffer> q      :quit<cr>
     map <buffer> <esc>  :quit<cr>
     map <buffer> <tab>  :call bookmark#del()<cr>
-    map <buffer> t      :call bookmark#use()<cr>
-    map <buffer> <cr>   :call bookmark#use_cr()<cr>
+    map <buffer> t      :call bookmark#use("tabnew")<cr>
+    map <buffer> <cr>   :call bookmark#use("enter")<cr>
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "open bookmark at new window
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -108,16 +108,14 @@ endfunction
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "build keymap
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-function! bookmark#use()
+function! bookmark#use(action)
     let s:filename = substitute(getline('.'), '\w\+.\w\+\s\+', '', '')
     silent exe  "close"
-    silent exe "tabnew " . s:filename
-endfunction
-
-function! bookmark#use_cr()
-    let s:filename = substitute(getline('.'), '\w\+.\w\+\s\+', '', '')
-    silent exe  "close"
-    silent exe "e " . s:filename
+    if a:action == "tabnew"
+        silent exe "tabnew " . s:filename
+    elseif a:action == "enter"
+        silent exe "e " . s:filename
+    endif
 endfunction
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
