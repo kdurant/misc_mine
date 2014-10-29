@@ -1,5 +1,4 @@
 syntax match bookmarkOperatorChars ":\|/\(/\|*\)\@!"
-"syntax match OperatorChars ":\|/\(/\|*\)\@!" contained
 hi link bookmarkOperatorChars Identifier
 
 syntax match bookmarkName   '^\w\+.\w\+'
