@@ -6,7 +6,7 @@
 "     b:verilog_indent_width   : indenting width(default value: shiftwidth)
 "
 " Install:
-"     Drop it to ~/.vim/indent 
+"     Drop it to ~/.vim/indent
 "
 " URL:
 "    http://www.vim.org/scripts/script.php?script_id=2091
@@ -14,24 +14,24 @@
 " Revision Comments:
 "     Mingzhi Li  2012-03-13 23:15:39 CST Version 1.3
 "        Bug fixes
-"     Mingzhi Li  2007-12-16 20:09:39 CST Version 1.2      
+"     Mingzhi Li  2007-12-16 20:09:39 CST Version 1.2
 "        Bug fixes
-"     Mingzhi Li  2007-12-13 23:47:54 CST Version 1.1      
+"     Mingzhi Li  2007-12-13 23:47:54 CST Version 1.1
 "        Bug fix, improve performance and add introductions
-"     Mingzhi Li  2007-12-7  22:16:41 CST Version 1.0  
+"     Mingzhi Li  2007-12-7  22:16:41 CST Version 1.0
 "        Initial version
-"       
+"
 " Known Limited:
 "     This indent file can not work well, when you break the long line into
 "     multi-line manually, such as:
-"      always @(posedge a or posedge b 
+"      always @(posedge a or posedge b
 "          or posedge c ) begin
 "         //...
-"      end 
+"      end
 "     Recommend to use the coding style(wraped by vim automatically) as following:
 "       always @(posedge a or posedge b or posedge c ) begin
 "         //...
-"       end 
+"       end
 
 " Only load this indent file when no other was loaded.
 if exists("b:did_indent")
@@ -64,7 +64,7 @@ function s:comment_ind(lnum)
     return -1
   endif
 
-  let endPos   = match(line,'\s*$') 
+  let endPos   = match(line,'\s*$')
 
   let flag1 = 0
   let flag2 = 0
@@ -224,7 +224,7 @@ function GetVerilog_SystemVerilogIndent()
 
   let last_line_ind = s:comment_ind(lnum)
   let last_line  = s:removecommment(getline(lnum),last_line_ind)
- 
+
   let indent0 = 0
   let indent1 = 0
   let indent2 = 0
@@ -266,25 +266,25 @@ function GetVerilog_SystemVerilogIndent()
   endif
 
   if (sum1 == 0) && (last_line !~ '^\s*end\|\<begin\>') &&
-        \ (curr_line =~ ')\s*;\s*$') && 
+        \ (curr_line =~ ')\s*;\s*$') &&
         \ (last_line =~ ',\s*$' || last_line =~ '\w\s*$\|]\s*$\|)\s*$')
     return ind - offset
   endif
 
-  let sum2 = de_indent0 
+  let sum2 = de_indent0
 
   if indent0 + indent1 + sum2 == 0
     let lnum2 = s:prevnonblanknoncomment(lnum - 1)
     let last_line2_ind = s:comment_ind(lnum2)
     let last_line2 = s:removecommment(getline(lnum2),last_line2_ind)
 
-    if ((last_line2 !~ pat0 && last_line2 !~ pat1) && 
+    if ((last_line2 !~ pat0 && last_line2 !~ pat1) &&
           \ (last_line2 =~ pat2 || last_line2 =~ pat3 || last_line2 =~ ':\s*$') &&
           \ (last_line =~ ';\s*$'))
       return indent(lnum2)
     endif
   endif
-  
+
 
   " Return the indention
   if (indent0 == 0 && indent1 == 1 && de_indent0 == 1)
@@ -295,7 +295,7 @@ function GetVerilog_SystemVerilogIndent()
     return ind - offset
   else
     return ind
-  endif 
+  endif
 
 endfunction
 

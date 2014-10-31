@@ -18,7 +18,7 @@ function! s:VStarsearch_searchCWord()
 		echohl NONE
 		return
 	endif
-	
+
 	if wordStr[0] =~ '\<'
 		let @/ = '\<' . wordStr . '\>'
 	else
