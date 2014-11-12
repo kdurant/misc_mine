@@ -1,11 +1,5 @@
-" Vim color file
-" Maintainer:   Mingbai <mbbill AT gmail DOT com>
-" Last Change:  2006-12-24 20:09:09
-
 set background=dark
 if version > 580
-    " no guarantees for version 5.8 and below, but this makes it stop
-    " complaining
     hi clear
     if exists("syntax_on")
 	syntax reset
@@ -13,7 +7,6 @@ if version > 580
 endif
 let g:colors_name="james"
 
-"hi Normal	guifg=gray guibg=#1B1D1E gui=none
 hi Normal	guifg=#839496 guibg=#002b35 gui=none
 
 " highlight groups
@@ -44,14 +37,12 @@ hi DiffChange       guifg=black             guibg=skyblue1
 hi DiffText         guifg=black             guibg=hotpink1  gui=none
 hi DiffDelete       guibg=gray45            guifg=black     gui=none
 hi CursorLine       guibg=#293739
-"hi SignColumn       guibg=Grey              guifg=DarkBlue
 hi SignColumn       guifg=#93a1a1           guibg=#073642   gui=none
 
 " syntax highlighting groups
 hi Comment          guifg=#306060                           gui=italic
 hi Constant         guifg=salmon                            gui=none
 hi Identifier       guifg=Skyblue                           gui=none
-"hi Function         guifg=#A6E22E                           gui=none
 hi Function         guifg=#82aa17                           gui=none
 hi Statement        guifg=#4682B4                           gui=none
 hi PreProc          guifg=#4682B4                           gui=none
@@ -62,7 +53,6 @@ hi Todo             guifg=orangered         guibg=yellow2   gui=none
 "extra added
 hi Macro            guifg=#EE82EE                           gui=none
 hi Operator         guifg=PaleGreen3                        gui=none
-"hi Repeat           guifg=#F92672                           gui=none
 hi Repeat           guifg=#8B1A1A                           gui=none
 hi Label            guifg=lightgoldenrod2                   gui=none
 hi String           guifg=salmon                            gui=italic
@@ -74,6 +64,7 @@ hi StorageClass     guifg=#FD971F                           gui=italic
 hi Conditional      guifg=#F92672                           gui=none
 hi Exception        guifg=red                               gui=none
 hi Keyword          guifg=tan1                              gui=none
+
 "solarized background color
 hi Solarized        guifg=#073642
 hi StateMachine     guifg=#93a1a1           guibg=#073642   gui=none
