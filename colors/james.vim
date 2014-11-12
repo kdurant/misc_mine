@@ -7,67 +7,67 @@ if version > 580
 endif
 let g:colors_name="james"
 
-hi Normal	guifg=#839496 guibg=#002b35 gui=none
+hi Normal	        guifg=#839496           guibg=#002b35   gui=NONE
 
 " highlight groups
-hi Cursor           guifg=black             guibg=yellow    gui=none
-hi ErrorMsg         guifg=white             guibg=red       gui=none
-hi VertSplit        guifg=gray40            guibg=gray40    gui=none
-hi Folded           guifg=DarkSlateGray3    guibg=grey30    gui=none
-hi FoldColumn       guifg=tan               guibg=grey30    gui=none
-hi IncSearch        guifg=#b0ffff           guibg=#2050d0
-hi LineNr           guifg=burlywood3                        gui=none
-hi ModeMsg          guifg=SkyBlue                           gui=none
-hi MoreMsg          guifg=SeaGreen                          gui=none
-hi NonText          guifg=cyan                              gui=none
-hi Question         guifg=springgreen                       gui=none
-hi Search           guifg=gray80            guibg=#445599   gui=none
-hi SpecialKey       guifg=cyan                              gui=none
+hi Cursor           guifg=black             guibg=yellow    gui=NONE
+hi ErrorMsg         guifg=white             guibg=red       gui=NONE
+hi VertSplit        guifg=gray40            guibg=gray40    gui=NONE
+hi Folded           guifg=DarkSlateGray3    guibg=grey30    gui=NONE
+hi FoldColumn       guifg=tan               guibg=grey30    gui=NONE
+hi IncSearch        guifg=#b0ffff           guibg=#2050d0   gui=NONE
+hi LineNr           guifg=burlywood3        guibg=NONE      gui=NONE
+hi ModeMsg          guifg=SkyBlue           guibg=NONE      gui=NONE
+hi MoreMsg          guifg=SeaGreen          guibg=NONE      gui=NONE
+hi NonText          guifg=cyan              guibg=NONE      gui=NONE
+hi Question         guifg=springgreen       guibg=NONE      gui=NONE
+hi Search           guifg=gray80            guibg=#445599   gui=NONE
+hi SpecialKey       guifg=cyan              guibg=NONE      gui=NONE
 hi StatusLine       guifg=black             guibg=#c2bfa5   gui=bold
-hi StatusLineNC     guifg=grey              guibg=gray40    gui=none
-hi Title            guifg=indianred                         gui=none
-hi Visual           guifg=gray17            guibg=tan1      gui=none
-hi WarningMsg       guifg=salmon                            gui=none
-hi Pmenu            guifg=white             guibg=#445599   gui=none
-hi PmenuSel         guifg=#445599           guibg=gray
-hi WildMenu         guifg=gray              guibg=gray17    gui=none
+hi StatusLineNC     guifg=grey              guibg=gray40    gui=NONE
+hi Title            guifg=indianred         guibg=NONE      gui=NONE
+hi Visual           guifg=gray17            guibg=tan1      gui=NONE
+hi WarningMsg       guifg=salmon            guibg=NONE      gui=NONE
+hi Pmenu            guifg=white             guibg=#445599   gui=NONE
+hi PmenuSel         guifg=#445599           guibg=gray      gui=NONE
+hi WildMenu         guifg=gray              guibg=gray17    gui=NONE
 hi MatchParen	    guifg=cyan              guibg=NONE      gui=bold
-hi DiffAdd          guifg=black             guibg=wheat1
-hi DiffChange       guifg=black             guibg=skyblue1
-hi DiffText         guifg=black             guibg=hotpink1  gui=none
-hi DiffDelete       guibg=gray45            guifg=black     gui=none
-hi CursorLine       guibg=#293739
-hi SignColumn       guifg=#93a1a1           guibg=#073642   gui=none
+hi DiffAdd          guifg=black             guibg=wheat1    gui=NONE
+hi DiffChange       guifg=black             guibg=skyblue1  gui=NONE
+hi DiffText         guifg=black             guibg=hotpink1  gui=NONE
+hi DiffDelete       guifg=black             guibg=gray45    gui=NONE
+hi CursorLine       guifg=NONE              guibg=#293739   gui=NONE
+hi SignColumn       guifg=#93a1a1           guibg=#073642   gui=NONE
 
 " syntax highlighting groups
-hi Comment          guifg=#306060                           gui=italic
-hi Constant         guifg=salmon                            gui=none
-hi Identifier       guifg=Skyblue                           gui=none
-hi Function         guifg=#82aa17                           gui=none
-hi Statement        guifg=#4682B4                           gui=none
-hi PreProc          guifg=#4682B4                           gui=none
-hi Type             guifg=tan1                              gui=none
-hi Special          guifg=aquamarine2                       gui=none
-hi Ignore           guifg=grey40                            gui=none
-hi Todo             guifg=orangered         guibg=yellow2   gui=none
+hi Comment          guifg=#306060           guibg=NONE      gui=italic
+hi Constant         guifg=salmon            guibg=NONE      gui=NONE
+hi Identifier       guifg=Skyblue           guibg=NONE      gui=NONE
+hi Function         guifg=#82aa17           guibg=NONE      gui=NONE
+hi Statement        guifg=#4682B4           guibg=NONE      gui=NONE
+hi PreProc          guifg=#4682B4           guibg=NONE      gui=NONE
+hi Type             guifg=tan1              guibg=NONE      gui=NONE
+hi Special          guifg=aquamarine2       guibg=NONE      gui=NONE
+hi Ignore           guifg=grey40            guibg=NONE      gui=NONE
+hi Todo             guifg=orangered         guibg=yellow2   gui=NONE
 "extra added
-hi Macro            guifg=#EE82EE                           gui=none
-hi Operator         guifg=PaleGreen3                        gui=none
-hi Repeat           guifg=#8B1A1A                           gui=none
-hi Label            guifg=lightgoldenrod2                   gui=none
-hi String           guifg=salmon                            gui=italic
-hi Number           guifg=#AE81FF
-hi Define           guifg=#EE82EE
-hi Character        guifg=lightgoldenrod2
-hi Structure        guifg=#66D9EF
-hi StorageClass     guifg=#FD971F                           gui=italic
-hi Conditional      guifg=#F92672                           gui=none
-hi Exception        guifg=red                               gui=none
-hi Keyword          guifg=tan1                              gui=none
+hi Macro            guifg=#EE82EE           guibg=NONE      gui=NONE
+hi Operator         guifg=PaleGreen3        guibg=NONE      gui=NONE
+hi Repeat           guifg=#8B1A1A           guibg=NONE      gui=NONE
+hi Label            guifg=lightgoldenrod2   guibg=NONE      gui=NONE
+hi String           guifg=salmon            guibg=NONE      gui=italic
+hi Number           guifg=#AE81FF           guibg=NONE      gui=NONE
+hi Define           guifg=#EE82EE           guibg=NONE      gui=NONE
+hi Character        guifg=lightgoldenrod2   guibg=NONE      gui=NONE
+hi Structure        guifg=#66D9EF           guibg=NONE      gui=NONE
+hi StorageClass     guifg=#FD971F           guibg=NONE      gui=italic
+hi Conditional      guifg=#F92672           guibg=NONE      gui=NONE
+hi Exception        guifg=red               guibg=NONE      gui=NONE
+hi Keyword          guifg=tan1              guibg=NONE      gui=NONE
 
 "solarized background color
-hi Solarized        guifg=#073642
-hi StateMachine     guifg=#93a1a1           guibg=#073642   gui=none
+hi Solarized        guifg=#073642           guifg=NONE      gui=NONE
+hi StateMachine     guifg=#93a1a1           guibg=#073642   gui=NONE
 
 " color terminal definitions
 hi SpecialKey       ctermfg=darkgreen
