@@ -21,7 +21,7 @@ endif
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 command! -nargs=1 Bookmark call bookmark#add(<f-args>)
 function! bookmark#add(bm_name)
-    if findfile(g:bm_name, g:bm_path) != ''
+    if !empty(readfile(glob(g:bm_path . g:bm_name)))
         let l:old_bm = readfile(g:bm_path . g:bm_name)
     endif
     if a:bm_name == '%'
@@ -29,14 +29,14 @@ function! bookmark#add(bm_name)
     else
         let l:new_bm = [a:bm_name, expand('%:p')] + l:old_bm
     endif
-    call writefile(l:new_bm, g:bm_path . g:bm_name)
+    call writefile(l:new_bm, glob(g:bm_path . g:bm_name))
     set autochdir
 endfunction
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "build window
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-nmap    <M-d>a  :call bookmark#open()<cr>
+map     <M-d>a  :call bookmark#open()<cr>
 function! bookmark#open()
     if bufname('%') == 'BookMark'
         exe "close"
@@ -61,7 +61,7 @@ function! bookmark#open()
     setlocal modifiable
     call setline(1, "BookmarkName\t\t\tBookmarkPath")
     let s:line_num = 2
-    for key in readfile(g:bm_path . g:bm_name) "s:old_bm
+    for key in readfile(glob(g:bm_path . g:bm_name)) "s:old_bm
         if key =~ '\w*\/\w*'
             let s:get_bm_path = 1
             let s:bm_path = key
@@ -91,7 +91,7 @@ function! bookmark#del()
     setlocal modifiable
     let s:choice = confirm("Delete bookmark?", "&Yes\n&No")
     if s:choice == 1
-        let s:old_bm = readfile(g:bm_path . g:bm_name)
+        let s:old_bm = readfile(glob(g:bm_path . g:bm_name))
         for key in s:old_bm
             if key == substitute(getline('.'), '\s\+.*', '', '')
                 call remove(s:old_bm, index(s:old_bm,key))
@@ -99,7 +99,7 @@ function! bookmark#del()
                 break
             endif
         endfor
-        call writefile(s:old_bm, g:bm_path . g:bm_name)
+        call writefile(s:old_bm, glob(g:bm_path . g:bm_name))
         exe "normal dd"
     endif
     setlocal nomodifiable
