@@ -75,7 +75,8 @@ hi Exception        guifg=red                               gui=none
 hi Keyword          guifg=tan1                              gui=none
 "solarized background color
 hi Solarized        guifg=#073642
-hi StateMachine     guifg=#93a1a1           guibg=#073642   gui=none
+"hi StateMachine     guifg=#93a1a1           guibg=#073642   gui=none
+hi StateMachine     guifg=#cccccc           guibg=#073642   gui=none
 
 " color terminal definitions
 hi SpecialKey       ctermfg=darkgreen
