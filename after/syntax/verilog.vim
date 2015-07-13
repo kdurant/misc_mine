@@ -1,7 +1,7 @@
 
 syntax  match       verilogIgnore       '\<DELAY\>'
 "syntax  match       verilogAddition     '\c\<\w*clk\w*\>'
-syntax  match       verilogAddition     '\c\<clk\>'
+syntax  match       verilogAddition     '\c\<clk_\w\+'
 "syntax  match       verilogAddition     '\c\<\w*rst\w*\>'
 syntax  match       verilogAddition     '\c\<\rst\>'
 syntax  match       verilogReg          '\<r\(\u\w\+\)\+\>'
