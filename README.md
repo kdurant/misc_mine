@@ -9,4 +9,6 @@ I package some no update plugins into my repo!
 
 * [verilog.vim](https://github.com/vim-scripts/verilog.vim)
 
+* vim-scripts/verilog_systemverilog.vim
+
 Because update this plugin use `vim-plum` is waste times.
