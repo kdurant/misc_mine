@@ -12,7 +12,7 @@ endif
 
 "au BufRead,BufNewFile *.v,*.vh,*.sv		set filetype=verilog_systemverilog
 au BufRead,BufNewFile *.v,*.vh		set filetype=verilog
-au BufRead,BufNewFile *.sv		set filetype=verilog_systemverilog
+au BufRead,BufNewFile *.sv		set filetype=systemverilog
 
 " Behaves just like Verilog
 runtime! ftplugin/verilog.vim
