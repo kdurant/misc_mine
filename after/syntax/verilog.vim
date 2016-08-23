@@ -1,12 +1,6 @@
 
 syntax  match       verilogIgnore       '\<DELAY\>'
-"syntax  match       verilogAddition     '\c\<\w*clk\w*\>'
 syntax  match       verilogAddition     '\c\<clk_\w\+'
-"syntax  match       verilogAddition     '\c\<\w*rst\w*\>'
-syntax  match       verilogAddition     '\c\<\rst\>'
-syntax  match       verilogReg          '\<r\(\u\w\+\)\+\>'
-syntax  match       verilogWire         '\<w\(\u\w\+\)\+\>'
-syntax  match       verilogInPort       '\<p\(\u\w\+\)\+\>'
 syntax  match       verilogState        '\<s\(\u\w\+\)\+\>'
 syntax  keyword     verilogType         reg wire integer real
 syntax  keyword     verilogPortIn       input
