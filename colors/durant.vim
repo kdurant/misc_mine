@@ -43,14 +43,12 @@ hi DiffChange       guifg=black             guibg=skyblue1
 hi DiffText         guifg=black             guibg=hotpink1  gui=none
 hi DiffDelete       guibg=gray45            guifg=black     gui=none
 hi CursorLine       guibg=#293739
-"hi SignColumn       guibg=Grey              guifg=DarkBlue
 hi SignColumn       guifg=#93a1a1           guibg=#073642   gui=none
 
 " syntax highlighting groups
 hi Comment          guifg=#6b6b6b                           gui=italic
 hi Constant         guifg=salmon                            gui=none
 hi Identifier       guifg=Skyblue                           gui=none
-"hi Function         guifg=#A6E22E                           gui=none
 hi Function         guifg=#82aa17                           gui=none
 hi Statement        guifg=#4682B4                           gui=none
 hi PreProc          guifg=#4682B4                           gui=none
@@ -61,7 +59,6 @@ hi Todo             guifg=orangered         guibg=yellow2   gui=none
 "extra added
 hi Macro            guifg=#EE82EE                           gui=italic
 hi Operator         guifg=PaleGreen3                        gui=none
-"hi Repeat           guifg=#F92672                           gui=none
 hi Repeat           guifg=#8B1A1A                           gui=none
 hi Label            guifg=lightgoldenrod2                   gui=none
 hi String           guifg=salmon                            gui=italic
@@ -73,11 +70,6 @@ hi StorageClass     guifg=#FD971F                           gui=italic
 hi Conditional      guifg=#F92672                           gui=none
 hi Exception        guifg=red                               gui=none
 hi Keyword          guifg=tan1                              gui=none
-"solarized background color
-hi Solarized        guifg=#073642
-"hi StateMachine     guifg=#93a1a1           guibg=#073642   gui=none
-hi StateMachine     guifg=#cccccc           guibg=#073642   gui=none
-
 " color terminal definitions
 hi SpecialKey       ctermfg=darkgreen
 hi NonText          cterm=bold              ctermfg=darkblue
