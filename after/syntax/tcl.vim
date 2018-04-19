@@ -13,7 +13,7 @@ hi default link modelsimOption      Type
 hi default link OperatorChars       Identifier
 hi default link modelsimTime        StateMachine
 hi default link modelsimDefine      Function
-hi default link modelsimFile        WildMenu
+"hi default link modelsimFile        Todo
 hi default link quartusPin          Function
 
 syntax match modelsimTest   '-color\s\+\(\S\+\)'
