@@ -38,9 +38,12 @@ hi DiffText         guifg=black             guibg=hotpink1  gui=NONE
 hi DiffDelete       guifg=black             guibg=gray45    gui=NONE
 hi CursorLine       guifg=NONE              guibg=#293739   gui=NONE
 hi SignColumn       guifg=#93a1a1           guibg=#073642   gui=NONE
+hi CursorColumn     ctermfg=NONE    ctermbg=23      cterm=NONE          guifg=NONE      guibg=#2e373b   gui=NONE
+hi ColorColumn      ctermfg=NONE    ctermbg=23      cterm=NONE          guifg=NONE      guibg=#2e373b   gui=NONE
+hi Directory        ctermfg=68      ctermbg=NONE    cterm=NONE          guifg=#3c98d9   guibg=NONE      gui=NONE
 
 " syntax highlighting groups
-hi Comment          guifg=#306060           guibg=NONE      gui=italic
+hi Comment          guifg=#306060           guibg=NONE      gui=NONE
 hi Constant         guifg=salmon            guibg=NONE      gui=NONE
 hi Identifier       guifg=Skyblue           guibg=NONE      gui=NONE
 hi Function         guifg=#82aa17           guibg=NONE      gui=NONE
@@ -55,19 +58,19 @@ hi Macro            guifg=#EE82EE           guibg=NONE      gui=NONE
 hi Operator         guifg=PaleGreen3        guibg=NONE      gui=NONE
 hi Repeat           guifg=#8B1A1A           guibg=NONE      gui=NONE
 hi Label            guifg=lightgoldenrod2   guibg=NONE      gui=NONE
-hi String           guifg=salmon            guibg=NONE      gui=italic
+hi String           guifg=salmon            guibg=NONE      gui=NONE
 hi Number           guifg=#AE81FF           guibg=NONE      gui=NONE
 hi Define           guifg=#EE82EE           guibg=NONE      gui=NONE
 hi Character        guifg=lightgoldenrod2   guibg=NONE      gui=NONE
 hi Structure        guifg=#66D9EF           guibg=NONE      gui=NONE
-hi StorageClass     guifg=#FD971F           guibg=NONE      gui=italic
+hi StorageClass     guifg=#FD971F           guibg=NONE      gui=NONE
 hi Conditional      guifg=#F92672           guibg=NONE      gui=NONE
 hi Exception        guifg=red               guibg=NONE      gui=NONE
 hi Keyword          guifg=tan1              guibg=NONE      gui=NONE
-
-"solarized background color
-hi Solarized        guifg=#073642           guifg=NONE      gui=NONE
-hi StateMachine     guifg=#93a1a1           guibg=#073642   gui=NONE
+hi Boolean          ctermfg=68      ctermbg=NONE    cterm=NONE          guifg=#3c98d9   guibg=NONE      gui=NONE
+hi Float            ctermfg=68      ctermbg=NONE    cterm=NONE          guifg=#3c98d9   guibg=NONE      gui=NONE
+hi Tag              ctermfg=153     ctermbg=NONE    cterm=NONE          guifg=#bcdbff   guibg=NONE      gui=NONE
+hi Underlined       ctermfg=NONE    ctermbg=NONE    cterm=underline     guifg=NONE      guibg=NONE      gui=underline
 
 " color terminal definitions
 hi SpecialKey       ctermfg=darkgreen
