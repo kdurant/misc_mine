@@ -1,4 +1,3 @@
-syntax  match       verilogIgnore       '\<DELAY\>'
 syntax  keyword     verilogAddition     always localparam parameter
 syntax  keyword     verilogState        cs ns
 "syntax  keyword     verilogType         
