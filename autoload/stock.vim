@@ -31,11 +31,32 @@ class Stock(object):
         self.stockName()
         txt = self.name + '  ' + self.per
         # print(txt)
+        vim.command('let @u= "%s"' % txt)
         return txt
-        #vim.command('let @*= "%s"' % txt)
+
+def stock_rise(id='603970'):
+    if id[0] == '6':
+        url = 'https://hq.sinajs.cn/list=sh' + id
+    else:
+        url = 'https://hq.sinajs.cn/list=sz' + id
+    r = requests.get(url)
+    info = r.text.split(',')
+
+    cur_price = float(info[3])  # 当前价格
+    open_price = float(info[2])  # 昨天的收盘价
+    per = (cur_price - open_price) / open_price
+    per *= 100
+    per = '%.2f%%' % per
+    
+    name = (info[0].split('"'))[1]
+
+    txt = name + '  ' + per
+    return txt
 EOF
 
-"  let s:com = "py3"
-"  function! stock#price()
-"      exec s:com 'Stock'
-"  endfunction
+let s:com = "py3"
+function! stock#price()
+    "exec s:com 'Stock().output()'
+    "echo @u
+    exec s:com 'pppp()'
+endfunction
