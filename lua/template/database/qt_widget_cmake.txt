@@ -1,0 +1,48 @@
+cmake_minimum_required(VERSION 3.5.0)
+
+project (demo LANGUAGES CXX)
+
+set (CMAKE_C_COMPILER "gcc")
+set (CMAKE_CXX_COMPILER g++)
+
+set (CMAKE_INCLUDE_CURRENT_DIR ON)
+
+# set (CMAKE_AUTOUIC ON)
+set (CMAKE_AUTOMOC ON)
+set (CMAKE_AUTORCC ON)
+
+set (CMAKE_CXX_STANDARD 11)
+set (CMAKE_CXX_STANDARD_REQUIRED ON)
+
+SET (EXECUTABLE_OUTPUT_PATH ${PROJECT_SOURCE_DIR}/bin)
+
+find_package (Qt5 COMPONENTS Core REQUIRED)
+find_package (Qt5 COMPONENTS Gui REQUIRED)
+find_package (Qt5 COMPONENTS Widgets REQUIRED)
+find_package (Qt5 COMPONENTS Network REQUIRED)
+find_package (Qt5 COMPONENTS PrintSupport REQUIRED)
+
+set (Project_UI  
+    ${CMAKE_SOURCE_DIR}/ui/mainwindow.ui
+)
+qt5_wrap_ui (Project_UI_MOC  ${Project_UI})
+
+set(SOURCES 
+    ${CMAKE_SOURCE_DIR}/src/main.cpp
+    ${CMAKE_SOURCE_DIR}/src/mainwindow.cpp
+)
+
+add_executable(demo
+    ${SOURCES}
+    ${Project_UI_MOC}
+    # ${CMAKE_SOURCE_DIR}/res.qrc
+    # resources.qrc
+)
+
+target_link_libraries(demo PRIVATE 
+    Qt5::Core 
+    Qt5::Gui
+    Qt5::Widgets 
+    Qt5::Network 
+    Qt5::PrintSupport
+)
