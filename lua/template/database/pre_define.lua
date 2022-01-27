@@ -198,9 +198,7 @@ set(CMAKE_CXX_COMPILER g++)
 set(CMAKE_CXX_STANDARD 11)
 
 SET (EXECUTABLE_OUTPUT_PATH ${PROJECT_SOURCE_DIR}/bin)
-
-include_directories("D:/Lib/benchmark/include")
-link_directories("D:/Lib/benchmark/build/src")
+find_package(benchmark REQUIRED)
 
 # 指定生成目标
 add_executable(${projectName}
@@ -210,8 +208,7 @@ add_executable(${projectName}
 )
 
 target_link_libraries(${projectName}
-        benchmark
-        Shlwapi
+        benchmark::benchmark
 )
 ]]
 
