@@ -82,6 +82,22 @@ local function generate_template(type)
         file = io.open("./benchmark/main.cpp", "w")
         file:write(main_cpp)
         file:close()
+    elseif type == "fpga" then
+        path = "fpga_project"
+        if os.execute("cd "..path) == 0 then 
+            print("The path already exists")
+        else
+            print("Create the path: " .. path)
+            os.execute("mkdir " .. path )
+            os.execute("mkdir " .. path .. "\\doc")
+            os.execute("mkdir " .. path .. "\\hdl")
+            os.execute("mkdir " .. path .. "\\bench")
+            os.execute("mkdir " .. path .. "\\modelsim")
+            os.execute("mkdir " .. path .. "\\build")
+            os.execute("mkdir " .. path .. "\\ip")
+            os.execute("mkdir " .. path .. "\\vivado")
+            os.execute("mkdir " .. path .. "\\scripts")
+        end
     else
         print("The type is not supported")
     end
