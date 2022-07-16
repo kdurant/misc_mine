@@ -7,6 +7,13 @@
 local config = require("template/database/pre_define")
 
 local function generate_template(type)
+
+    if vim.api.nvim_eval('has("unix")') == 1 then
+        path_seperator = "/"
+    else
+        path_seperator = "\\"
+    end
+
     if(type == "qt_widget") then
         cmake = config.qt_widget_cmake
         mainwindow_h = config.qt_widget_mainwindow_h
@@ -16,14 +23,14 @@ local function generate_template(type)
 
         path = "qt_widget"
 
-        -- print(cmake)
-        if os.execute("cd "..path) == 0 then 
-            print("The path already exists")
+        file1, err = io.open(path)
+        if err == nil then 
+            vim.notify("The path already exists", vim.log.levels.WARN)
         else
-            print("Create the path: " .. path)
+            vim.notify("Create the path: " .. path, vim.log.levels.INFO)
             os.execute("mkdir " .. path )
-            os.execute("mkdir " .. path .. "\\src")
-            os.execute("mkdir " .. path .. "\\ui")
+            os.execute("mkdir " .. path .. path_seperator .. "src")
+            os.execute("mkdir " .. path .. path_seperator .. "ui")
         end
 
         file = io.open("./qt_widget/CMakeLists.txt", "w")
@@ -50,10 +57,11 @@ local function generate_template(type)
         cmake = config.qt_console_cmake
         main_cpp = config.qt_console_main_cpp
 
-        if os.execute("cd test") == 0 then 
-            print("The path already exists")
+        file, err = io.open('test')
+        if err == nil then 
+            vim.notify("The path already exists", vim.log.levels.WARN)
         else
-            print("Create the path: test")
+            vim.notify("Create the path: test" , vim.log.levels.INFO)
             os.execute("mkdir test")
         end
 
@@ -68,10 +76,11 @@ local function generate_template(type)
         cmake = config.benchmark_cmake
         main_cpp = config.benchmark_main_cpp
 
-        if os.execute("cd benchmark") == 0 then 
-            print("The path already exists")
+        file, err = io.open('benchmark')
+        if err == nil then 
+            vim.notify("The path already exists", vim.log.levels.WARN)
         else
-            print("Create the path: benchmark")
+            vim.notify("Create the path: benchmark" , vim.log.levels.INFO)
             os.execute("mkdir benchmark")
         end
 
@@ -84,22 +93,24 @@ local function generate_template(type)
         file:close()
     elseif type == "fpga" then
         path = "fpga_project"
-        if os.execute("cd "..path) == 0 then 
-            print("The path already exists")
+        
+        file, err = io.open(path)
+        if err == nil then 
+            vim.notify("The path already exists", vim.log.levels.WARN)
         else
-            print("Create the path: " .. path)
+            vim.notify("Create the path: " .. path , vim.log.levels.INFO)
             os.execute("mkdir " .. path )
-            os.execute("mkdir " .. path .. "\\doc")
-            os.execute("mkdir " .. path .. "\\hdl")
-            os.execute("mkdir " .. path .. "\\bench")
-            os.execute("mkdir " .. path .. "\\modelsim")
-            os.execute("mkdir " .. path .. "\\build")
-            os.execute("mkdir " .. path .. "\\ip")
-            os.execute("mkdir " .. path .. "\\vivado")
-            os.execute("mkdir " .. path .. "\\scripts")
+            os.execute("mkdir " .. path .. path_seperator .. "doc")
+            os.execute("mkdir " .. path .. path_seperator .. "hdl")
+            os.execute("mkdir " .. path .. path_seperator .. "bench")
+            os.execute("mkdir " .. path .. path_seperator .. "modelsim")
+            os.execute("mkdir " .. path .. path_seperator .. "build")
+            os.execute("mkdir " .. path .. path_seperator .. "ip")
+            os.execute("mkdir " .. path .. path_seperator .. "vivado")
+            os.execute("mkdir " .. path .. path_seperator .. "scripts")
         end
     else
-        print("The type is not supported")
+        vim.notify("The type is not supported", vim.log.levels.ERROR)
     end
 end
 
