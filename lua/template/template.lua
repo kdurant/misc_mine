@@ -119,8 +119,16 @@ local function show_stuff(stuff)
 end
 
 
+local function compile_files()
+    if vim.o.filetype == 'python' then
+        print(vim.fn.system("python " .. vim.fn.expand('%')))
+    else
+        vim.notify("The filetype is not supported", vim.log.levels.ERROR)
+    end
+end
 
 return {
+    compile_files = compile_files,
     generate_template = generate_template,
     show_stuff = show_stuff
 }
